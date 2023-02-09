@@ -32,7 +32,7 @@ connection
   console.log('Conexão feita')
 })
 .catch((error) => {
-  console;log(error)
+  console.log(error)
 })
  
 
