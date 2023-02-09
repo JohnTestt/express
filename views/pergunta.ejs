@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/bootstrap.min.css"> 
+    <title>Document</title>
+</head>
+<body>
+    <%- include ('partials/navbar.ejs'); %>
+<!-- 
+    pq n usei forEach aqui?  Simples, eu queria apenas um elemento da pergunta por id, se usasse esse metodo, ele mostraria todos as
+perguntas-->
+
+   <div class="container">
+<hr>
+    <h2> <%=  elemento.titulo %></h2>
+    <h6> <%=  elemento.descricao %></h6>
+    <hr>
+   </div>
+
+                            <!-- formulario resposta -->
+   <div class="container">
+
+   <form method="POST" action="/responder">
+    <label for="">Resposta:</label>
+    <br>
+    <textarea placeholder="Digite sua Resposta" class="form-control" name="corpo" id="" cols="30" rows="10"></textarea>
+    <br>
+    <input type="hidden" name="pergunta" value="<%= elemento.id %>">
+    <button type="submit" class="btn-primary">Responder</button>
+   </form>
+
+
+
+<hr>
+
+    <h3>Respostas</h3>
+<hr>
+   
+    <% respostas.forEach(resposta => { %>
+<br>
+      <div class="card">
+        <div class="card-body">
+
+            <h3> <%= resposta.corpo %> </h3>
+            
+
+        </div>
+      </div>
+ 
+        <%  }) %>
+<br>
+</div>
+ 
+</body>
+<%- include ('./partials/footer.ejs') %>
+</html>
+
